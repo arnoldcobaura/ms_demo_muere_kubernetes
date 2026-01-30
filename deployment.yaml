@@ -1,0 +1,31 @@
+apiVersion: apps/v1          # API que soporta Deployments
+kind: Deployment             # Tipo de recurso: Deployment
+
+metadata:
+  name: demo-muere           # Nombre del Deployment (no del Pod)
+
+spec:
+  replicas: 1                # Kubernetes debe mantener 1 Pod vivo
+
+  selector:
+    matchLabels:
+      app: demo-muere        # El Deployment controla Pods con esta etiqueta
+
+  template:                  # Plantilla para crear los Pods
+    metadata:
+      labels:
+        app: demo-muere      # Etiqueta del Pod (DEBE coincidir con el selector)
+
+    spec:                    # Especificación del Pod
+      containers:
+        - name: demo-muere   # Nombre del contenedor dentro del Pod
+
+          image: localhost/demo-muere  # Imagen Docker local que creaste
+
+          imagePullPolicy: Never
+          # No intentes descargar la imagen de Docker Hub
+          # Usa solo la imagen local
+          # valores posibles: Always, IfNotPresent, Never
+          # Always: siempre intenta descargar la imagen
+          # IfNotPresent: solo intenta descargar la imagen si no existe localmente
+          # Never: nunca intenta descargar la imagen
