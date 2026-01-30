@@ -63,6 +63,9 @@ kubectl get deployments --context kind-arnold-cluster
 # Primero obtener el nombre del pod
 kubectl get pods -n default --context kind-arnold-cluster
 
+# Ver el estado del pod
+kubectl get pods -w --context kind-arnold-cluster
+
 # Luego ver los logs
 kubectl logs -f <nombre_del_pod> -n default --timestamps --context kind-arnold-cluster
 ```
