@@ -72,7 +72,7 @@ kubectl get pods -n default --context kind-arnold-cluster
 kubectl get pods -w --context kind-arnold-cluster
 ```
 
-### Luego ver los logs
+### Luego ver los logs ( reemplaza <nombre_del_pod> por el nombre del pod que obtuviste en el paso anterior)
 ```bash
 kubectl logs -f <nombre_del_pod> -n default --timestamps --context kind-arnold-cluster
 ```
